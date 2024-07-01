@@ -1,0 +1,14 @@
+applications:
+  - name: servicea-eureka
+    instances: 1
+    memory: 1G
+    disk_quota: 1G
+    buildpacks:
+      - java_buildpack_offline
+    services:
+      - eurerka-registry
+      - demo-credhub
+    path: build/libs/servicea-0.0.1-SNAPSHOT.jar
+    env:
+      JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 17.+ } }'
+      SPRING_PROFILES_ACTIVE: cloud
